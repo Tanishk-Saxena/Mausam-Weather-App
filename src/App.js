@@ -1,5 +1,4 @@
 import './App.css';
-import UilReact from '@iconscout/react-unicons/icons/uil-react'
 import TopButtons from './components/TopButtons';
 import Inputs from './components/Inputs';
 import TimeAndLocation from './components/TimeAndLocation';
@@ -7,10 +6,12 @@ import TemperatureAndDetails from './components/TemperatureAndDetails';
 import Forecast from './components/Forecast';
 import getFormattedWeatherData from './services/weatherService';
 import { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  const [query, setQuery] = useState({q: "berlin"});
+  const [query, setQuery] = useState({q: "Berlin"});
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -29,7 +30,14 @@ function App() {
   useEffect(() => {
 
     const fetchWeather = async () => {
-      await getFormattedWeatherData({...query, units}).then((data) => {setWeather(data)});
+      
+      const message = query.q?query.q:"current location";
+      toast.info(`Fetching weather for ${message}.`);
+
+      await getFormattedWeatherData({...query, units}).then((data) => {
+        toast.success(`Successfully fetched data for ${data.name}, ${data.country}.`);
+        setWeather(data)
+      });
     }
 
     fetchWeather();
@@ -53,6 +61,8 @@ function App() {
       )}
       
     </div>
+
+    <ToastContainer autoClose={1500} newestOnTop={true} theme={"colored"}/>
     </>
   );
 }
