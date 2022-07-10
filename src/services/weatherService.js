@@ -3,8 +3,6 @@ import { DateTime } from "luxon";
 const API_KEY = "fda8c3e7574cbf713183eeae40d340e0";
 const BASE_URL = "https://api.openweathermap.org/data/2.5/"
 
-const ONE_URL = "https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}"
-
 const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + infoType)
     url.search = new URLSearchParams({...searchParams, appid: API_KEY});
@@ -43,7 +41,7 @@ const formatForecastWeather = (data) => {
     hourly=hourly.slice(1, 6).map((d) => {
         return {
             title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
-            temp: d.temp.day,
+            temp: d.temp,
             icon: d.weather[0].icon
         }
     });
@@ -63,6 +61,7 @@ const getFormattedWeatherData = async (searchParams) => {
 }
 
 const formatToLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local time: 'hh:mm a") => {
+    //we did escaping in the ' | Local time: ' part
     return DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 }
 
