@@ -45,8 +45,10 @@ function Inputs({setUnits, setQuery}) {
   return (
     <div className="flex flex-row justify-center my-6">
         <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
-
+            <form onSubmit = {(e) => {e.preventDefault();handleSearchClick();}}>
             <input type="text" id="search" val={city} onChange={handleOnChange} className="text-xl font-light p-2 focus:outline-none w-full shadow-xl capitalize placeholder:lowercase" placeholder="Search for city..." />
+            <input type="submit" style={{display: "none"}}></input>
+            </form>
             <UilSearch color="white" size={25} className="cursor-pointer transition ease-out hover:scale-125" onClick={handleSearchClick}/>
             <UilLocationPoint color="white" size={25} className="cursor-pointer transition ease-out hover:scale-125" onClick={handleLocationClick}/>
 
