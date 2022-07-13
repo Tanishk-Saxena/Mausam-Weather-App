@@ -16,15 +16,39 @@ function App() {
   const [weather, setWeather] = useState(null);
 
   const formatBackground = () => {
+
     if(!weather){
-      return "from-cyan-700 to-blue-700";
+      return "from-black to-black";
     }
-    const threshold = units === "metric" ? 20: 60;
-    if(weather.temp<=threshold){
-      return "from-cyan-700 to-blue-700";
-    }else if(weather.temp>threshold){
-      return "from-yellow-700 to-orange-700";
+    if(weather.main === "Clouds"){
+      if(weather.description === "few clouds"){
+        return "from-blue-400 to-gray-400";
+      }else if(weather.description === "scattered clouds"){
+        return "from-gray-600 to-gray-300";
+      }else if(weather.description === "broken clouds"){
+        return "from-gray-800 to-blue-300";
+      }
+    }else if(weather.main === "Rain"){
+      if(weather.description === "shower rain"){
+        return "from-gray-800 to-gray-400";
+      }else{
+        return "from-gray-900 to-gray-500";
+      }
+    }else if(weather.main === "Thunderstorm"){
+      return "from-gray-700 to-yellow-400";
+    }else if(weather.main === "Snow"){
+      return "from-blue-300 to-cyan-300";
+    }else if(weather.main === "Mist"){
+      return "from-blue-300 to-gray-500";
+    }else{
+      const threshold = units === "metric" ? 20: 60;
+      if(weather.temp<=threshold){
+          return "from-cyan-700 to-blue-700";
+      }else if(weather.temp>threshold){
+        return "from-yellow-700 to-orange-700";
+      }
     }
+
   }
 
   useEffect(() => {
