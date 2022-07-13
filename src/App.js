@@ -23,10 +23,10 @@ function App() {
     if(weather.main === "Clouds"){
       if(weather.description === "few clouds"){
         return "from-blue-400 to-gray-400";
-      }else if(weather.description === "scattered clouds"){
-        return "from-gray-600 to-gray-300";
       }else if(weather.description === "broken clouds"){
         return "from-gray-800 to-blue-300";
+      }else{
+        return "from-gray-600 to-gray-300";
       }
     }else if(weather.main === "Rain"){
       if(weather.description === "shower rain"){

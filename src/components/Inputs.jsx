@@ -26,6 +26,8 @@ function Inputs({setUnits, setQuery}) {
   const handleSearchClick = () => {
     if(city !== "") {
       setQuery({q: city});
+      setCity("");
+      document.getElementById("search").value="";
     }
   }
 
@@ -44,7 +46,7 @@ function Inputs({setUnits, setQuery}) {
     <div className="flex flex-row justify-center my-6">
         <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
 
-            <input type="text" val={city} onChange={handleOnChange} className="text-xl font-light p-2 focus:outline-none w-full shadow-xl capitalize placeholder:lowercase" placeholder="Search for city..." />
+            <input type="text" id="search" val={city} onChange={handleOnChange} className="text-xl font-light p-2 focus:outline-none w-full shadow-xl capitalize placeholder:lowercase" placeholder="Search for city..." />
             <UilSearch color="white" size={25} className="cursor-pointer transition ease-out hover:scale-125" onClick={handleSearchClick}/>
             <UilLocationPoint color="white" size={25} className="cursor-pointer transition ease-out hover:scale-125" onClick={handleLocationClick}/>
 
