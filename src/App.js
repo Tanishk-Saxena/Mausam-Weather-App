@@ -8,6 +8,8 @@ import getFormattedWeatherData from './services/weatherService';
 import { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { UilHeart } from '@iconscout/react-unicons'
+const image = require('./Mausam-transparent.png');
 
 function App() {
 
@@ -71,7 +73,13 @@ function App() {
   return (
     <>
     {/* <div className="App"></div> */}
-    <div className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br ${formatBackground()} h-fit shadow-xl shadow-gray-400`}>
+    <div className={`mx-auto max-w-screen-2xl pb-5 px-5 md:px-32 bg-gradient-to-br ${formatBackground()} h-fit shadow-xl shadow-gray-400`}>
+
+      <header className='text-center text-white text-xs'>
+        <img src={image} alt="logo" className='w-44 inline-block' />
+        {/* <p className='-mt-16 mb-20 ml-16 font-extralight'>Find your weather...</p> */}
+      </header>
+
       <TopButtons setQuery={setQuery}/>
       <Inputs setQuery={setQuery} setUnits={setUnits}/>
 
@@ -84,6 +92,10 @@ function App() {
         </>
       )}
       
+    <footer className='text-center pt-24 pb-4 text-white'>
+        Made with <UilHeart className='inline text-[#E40049]'/> by Tanishk
+    </footer>
+
     </div>
 
     <ToastContainer autoClose={1500} newestOnTop={true} theme={"colored"}/>

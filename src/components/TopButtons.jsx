@@ -27,9 +27,9 @@ function TopButtons({setQuery}) {
     }
 
     return (
-        <div className="flex items-center justify-around my-6">
+        <div className="flex items-center justify-around my-6 space-x-4 md:space-x-0">
             {cities.map((city) => (
-                <button key={city.id} className="text-white text-lg font-medium" onClick={()=>{handleOnClick(city.title)}}>{city.title}</button>
+                <button key={city.id} className="text-white text-sm md:text-lg font-medium" onClick={()=>{handleOnClick(city.title)}}>{city.title}</button>
             ))}
         </div>
     )
