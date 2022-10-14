@@ -48,22 +48,22 @@ function TemperatureAndDetails({weather: {
         <div className="flex flex-row items-center justify-center space-x-2 py-3 text-white text-xs md:text-sm">
             <UilSun/>
             <p className="font-light">
-                Rise: <p className="font-medium">{formatToLocalTime(sunrise, timezone, "hh:mm a")}</p>
+                Rise: <span className="font-medium">{formatToLocalTime(sunrise, timezone, "hh:mm a")}</span>
             </p>
             <p className="font-light">|</p>
             <UilSunset/>
             <p className="font-light">
-                Set: <p className="font-medium">{formatToLocalTime(sunset, timezone, "hh:mm a")}</p>
+                Set: <span className="font-medium">{formatToLocalTime(sunset, timezone, "hh:mm a")}</span>
             </p>
             <p className="font-light">|</p>
             <UilArrowUp/>
             <p className="font-light">
-                High: <p className="font-medium">{`${Math.round(temp_max)}°`}</p>
+                High: <span className="font-medium">{`${Math.round(temp_max)}°`}</span>
             </p>
             <p className="font-light">|</p>
             <UilArrowDown/>
             <p className="font-light">
-                Low: <p className="font-medium ml-1">{`${Math.round(temp_min)}°`}</p>
+                Low: <span className="font-medium ml-1">{`${Math.round(temp_min)}°`}</span>
             </p>
         </div>
     </div>

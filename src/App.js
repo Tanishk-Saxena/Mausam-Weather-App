@@ -13,7 +13,7 @@ const image = require('./Mausam-transparent.png');
 
 function App() {
 
-  const [query, setQuery] = useState({q: "Berlin"});
+  const [query, setQuery] = useState({q: "New Delhi"});
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
